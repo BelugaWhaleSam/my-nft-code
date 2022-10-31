@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
-import { contractABI, contractAddress, myAddress } from "./utils/constants";
+import { contractABI, contractAddress,} from "./utils/constants";
 import "./App.css";
 
 function App() {
@@ -13,7 +13,12 @@ function App() {
     'aws': 120,
     "cat": 16,
     "dog": 8,
+    'elon': 69,
+    'dodge': 420,
     'car': 52,
+    'bike': 32,
+    'bitcoin': 111,
+    'eth': 230,
   };
 
   const getEthereumContract = () => {
@@ -39,8 +44,8 @@ function App() {
 
       Object.keys(data).forEach(function (key) {
         if (key === code) {
-          transactionContract.safeMint(myAddress, data[key]);
-        }
+          transactionContract.safeMint(currentAccount, data[key]);
+        } 
       });
     } catch (error) {
       console.log(error);
