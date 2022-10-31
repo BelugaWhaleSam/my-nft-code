@@ -10,10 +10,10 @@ function App() {
   const [correctNetwork, setCorrectNetwork] = useState(false);
 
   const data = {
-    'aws': 50,
-    "cat": 2,
-    "dog": 3,
-    'car': 4,
+    'aws': 120,
+    "cat": 16,
+    "dog": 8,
+    'car': 52,
   };
 
   const getEthereumContract = () => {
