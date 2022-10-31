@@ -1,0 +1,20 @@
+body {
+    background-color: beige;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    
+    margin: auto;
+}
+
+.button {
+    margin-top: 200px;
+    margin-bottom: 10px;
+}
+
+.button-mint {
+    margin-top: 200px;
+}
