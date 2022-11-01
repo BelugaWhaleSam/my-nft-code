@@ -3,7 +3,7 @@ This web app mints a nft by considering a valid code, only mint those with a val
 <br />
 ![image](https://user-images.githubusercontent.com/99763743/199169278-3a869b7c-3f3d-4ca0-b702-f6f0390403be.png)
 <br />
-You can only connect your wallet on goerli testnet. Also, you can only mint on goerli testnt
+You can only connect your wallet on goerli testnet. Also, you can only mint on goerli testnet
 <br />
 aws: 120,
 <br />
