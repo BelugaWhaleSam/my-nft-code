@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
-import { contractABI, contractAddress,} from "./utils/constants";
+import { contractABI, contractAddress } from "./utils/constants";
 import "./App.css";
 
 function App() {
@@ -10,15 +10,15 @@ function App() {
   const [correctNetwork, setCorrectNetwork] = useState(false);
 
   const data = {
-    'aws': 120,
-    "cat": 16,
-    "dog": 8,
-    'elon': 69,
-    'dodge': 420,
-    'car': 52,
-    'bike': 32,
-    'bitcoin': 111,
-    'eth': 230,
+    aws: 120,
+    cat: 16,
+    dog: 8,
+    elon: 69,
+    dodge: 420,
+    car: 52,
+    bike: 32,
+    bitcoin: 111,
+    eth: 230,
   };
 
   const getEthereumContract = () => {
@@ -41,12 +41,18 @@ function App() {
   const Mint = async () => {
     try {
       const transactionContract = getEthereumContract();
+      const { ethereum } = window;
+      let chainId = await ethereum.request({ method: "eth_chainId" });
+      const ChainId = "0x5";
 
+      if(chainId === ChainId){
       Object.keys(data).forEach(function (key) {
         if (key === code) {
           transactionContract.safeMint(currentAccount, data[key]);
-        } 
-      });
+        }
+      }); } else {
+        alert("Please connect to Goerli Network to mint");
+      }
     } catch (error) {
       console.log(error);
 
@@ -82,7 +88,6 @@ function App() {
       // Also It will return the list of accounts associated with the wallet
 
       let chainId = await ethereum.request({ method: "eth_chainId" });
-      console.log("Connected to chain:" + chainId);
 
       const ChainId = "0x5";
 
@@ -108,8 +113,6 @@ function App() {
   const checkCorrectNetwork = async () => {
     const { ethereum } = window;
     let chainId = await ethereum.request({ method: "eth_chainId" });
-    console.log("Connected to chain:" + chainId);
-
     const ChainId = "0x5";
 
     if (chainId !== ChainId) {
@@ -119,15 +122,15 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    checkIfWalletIsConnected();
-    checkCorrectNetwork();
-  }, []);
-
   function setTheValueOfCode() {
     setCode(code);
     Mint();
   }
+
+  useEffect(() => {
+    checkIfWalletIsConnected();
+    checkCorrectNetwork();
+  }, [connectWallet]);
 
   return (
     <div className="App">
